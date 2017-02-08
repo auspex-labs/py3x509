@@ -1,10 +1,17 @@
 pyx509: X.509 Certificate and PKCS7 Parser / Verifier for Python
 ################################################################
 
-This is a fork of the original project:
+This is a fork of a fork of a fork of the original project:
 
-    pyx509 - Python library for parsing X.509
+    py3x509 - Python library for parsing X.509
     Copyright (C) 2009-2012  CZ.NIC, z.s.p.o. (http://www.nic.cz)
+
+    Forked from https://github.com/ph4r05/px509
+    Forked from https://github.com/erny/pyx509
+    Forked from https://github.com/hiviah/pyx509
+
+    Updates by me rename the module to 'x509' and update to Python3 only.
+    Copyright (C) 2017 <siege@siege.org> (https://github.com/cniemira/py3x509)
 
 Work in progress!
 
@@ -45,7 +52,7 @@ Installation
 
 Install with pip::
 
-    pip install pyx509_ph4
+    pip install py3x509
 
 
 License

@@ -25,9 +25,9 @@ from pyasn1.type import tag,namedtype,univ
 from pyasn1 import error
 
 # local imports
-from X509_certificate import *
-from general_types import *
-from oid import oid_map as oid_map
+from x509.pkcs7.asn1_models.X509_certificate import *
+from x509.pkcs7.asn1_models.general_types import *
+from x509.pkcs7.asn1_models.oid import oid_map as oid_map
 '''
 ASN.1 modules from http://www.ietf.org/rfc/rfc3281.txt
 '''

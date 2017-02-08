@@ -19,11 +19,11 @@
 
 import os
 from os.path import join
-from StringIO import StringIO
+from io import StringIO
 import sys
 import unittest
 
-from pyx509 import commands
+from x509 import commands
 
 TEST_DATA_DIR = join(os.path.dirname(__file__), 'data')
 TEST_CERTIFICATE = join(TEST_DATA_DIR, 'test_certificate.der')
@@ -44,27 +44,39 @@ class SimpleTest(unittest.TestCase):
         sys.stdout = sys.__stdout__
 
     def test_certificate(self):
-        commands.print_certificate_info(file(TEST_CERTIFICATE).read())
+        with open(TEST_CERTIFICATE, 'rb') as fh:
+            commands.print_certificate_info(fh.read())
         txt1 = sys.stdout.getvalue()
-        txt2 = file(TEST_CERTIFICATE_TXT).read()
+        with open(TEST_CERTIFICATE_TXT, 'r') as fh:
+            txt2 = fh.read()
+        self.maxDiff = 4096
         self.assertEqual(txt1, txt2)
 
     def test_signature(self):
-        commands.print_signature_info(file(TEST_SIGNATURE).read())
+        with open(TEST_SIGNATURE, 'rb') as fh:
+            commands.print_signature_info(fh.read())
         txt1 = sys.stdout.getvalue()
-        txt2 = file(TEST_SIGNATURE_TXT).read()
+        with open(TEST_SIGNATURE_TXT, 'r') as fh:
+            txt2 = fh.read()
+        self.maxDiff = 8192
         self.assertEqual(txt1, txt2)
 
     def test_timestamp(self):
-        commands.print_signature_info(file(TEST_TIMESTAMP).read())
+        with open(TEST_TIMESTAMP, 'rb') as fh:
+            commands.print_signature_info(fh.read())
         txt1 = sys.stdout.getvalue()
-        txt2 = file(TEST_TIMESTAMP_TXT).read()
+        with open(TEST_TIMESTAMP_TXT, 'r') as fh:
+            txt2 = fh.read()
+        self.maxDiff = 4096
         self.assertEqual(txt1, txt2)
 
     def test_timestamp_info(self):
-        commands.print_timestamp_info(file(TEST_TIMESTAMP).read())
+        with open(TEST_TIMESTAMP, 'rb') as fh:
+            commands.print_timestamp_info(fh.read())
         txt1 = sys.stdout.getvalue()
-        txt2 = file(TEST_TIMESTAMP_INFO_TXT).read()
+        with open(TEST_TIMESTAMP_INFO_TXT, 'r') as fh:
+            txt2 = fh.read()
+        self.maxDiff = 4096
         self.assertEqual(txt1, txt2)
 
 

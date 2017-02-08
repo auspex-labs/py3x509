@@ -18,8 +18,8 @@
 #*
 
 import sys
-from models import PKCS7
-from models import X509Certificate
+from x509.models import PKCS7
+from x509.models import X509Certificate
 
 
 def print_certificate_info(derData):
@@ -62,9 +62,9 @@ def print_timestamp_info(derData):
     """
     pkcs7 = PKCS7.from_der(derData)
     signedDate, valid_from, valid_to, signer = pkcs7.get_timestamp_info()
-    print "Signature date: %s" % signedDate
-    print "Signers certicate valid from: %s, to: %s" % (valid_from, valid_to)
-    print "Signers certicate sbject: %s" % signer
+    print("Signature date: %s" % signedDate)
+    print("Signers certicate valid from: %s, to: %s" % (valid_from, valid_to))
+    print("Signers certicate sbject: %s" % signer)
 
 
 def print_timestamp_info_cmd():

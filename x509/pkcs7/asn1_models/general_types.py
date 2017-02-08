@@ -26,8 +26,8 @@ from pyasn1.type import tag,namedtype,namedval,univ,char,useful
 from pyasn1 import error
 
 # local imports
-from tools import *
-from oid import *
+from x509.pkcs7.asn1_models.tools import *
+from x509.pkcs7.asn1_models.oid import *
 
 
 class ConvertibleBitString(univ.BitString):
@@ -37,15 +37,17 @@ class ConvertibleBitString(univ.BitString):
     '''
     
     def toOctets(self):
+        # oh $deity, please FIXME
         '''
         Converts bit string into octets string
         '''
         def _tuple_to_byte(tuple):          
-          return chr(int(''.join(map(str, tuple)),2))
+          #return chr(int(''.join(map(str, tuple)),2))
+          return int(''.join(map(str, tuple)),2).to_bytes(1, byteorder='big')
       
-        res = ''        
-        byte_len = len(self._value) / 8
-        for byte_idx in xrange(byte_len):
+        res = b''        
+        byte_len = int(len(self._value) / 8)
+        for byte_idx in range(byte_len):
             bit_idx = byte_idx * 8
             byte_tuple = self._value[bit_idx:bit_idx + 8]
             byte = _tuple_to_byte(byte_tuple)            

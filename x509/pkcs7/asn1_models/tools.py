@@ -21,12 +21,12 @@ Some useful tools for working with ASN1 components.
 '''
 
 # dslib imports
-from decoder_workarounds import decode
+from x509.pkcs7.asn1_models.decoder_workarounds import decode
 from pyasn1 import error
 
 # local imports
-from RSA import RsaPubKey
-from DSA import DssParams, DsaPubKey
+from x509.pkcs7.asn1_models.RSA import RsaPubKey
+from x509.pkcs7.asn1_models.DSA import DssParams, DsaPubKey
 
 
 def tuple_to_OID(tuple):
@@ -35,7 +35,7 @@ def tuple_to_OID(tuple):
     """
     l = len(tuple)
     buf = ''
-    for idx in xrange(l):
+    for idx in range(l):
         if (idx < l-1):
             buf += str(tuple[idx]) + '.'
         else:

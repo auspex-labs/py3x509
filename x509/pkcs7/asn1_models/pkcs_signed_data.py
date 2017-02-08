@@ -28,10 +28,10 @@ from pyasn1.type import tag,namedtype,univ,useful
 from pyasn1 import error
 
 # local imports
-from X509_certificate import Certificates
-from att_certificate_v2 import CertificateSet
-from general_types import *
-from oid import oid_map as oid_map
+from x509.pkcs7.asn1_models.X509_certificate import Certificates
+from x509.pkcs7.asn1_models.att_certificate_v2 import CertificateSet
+from x509.pkcs7.asn1_models.general_types import *
+from x509.pkcs7.asn1_models.oid import oid_map as oid_map
 
 
 class SignedContent(univ.SequenceOf):
@@ -44,7 +44,7 @@ class SignedContent(univ.SequenceOf):
                     )
     def getContentValue(self):
         values = []
-        for idx in xrange(len(self)):
+        for idx in range(len(self)):
             comp = self.getComponentByPosition(idx)
             values.append(comp._value)
         return "".join(values)
