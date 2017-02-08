@@ -2,7 +2,7 @@ from distutils.core import setup
 from setuptools import find_packages
 
 setup(
-    name='py3x509',
+    name='x509',
     version='0.1',
     packages=find_packages(),
     url='https://github.com/cniemira/py3x509',
