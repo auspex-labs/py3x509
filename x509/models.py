@@ -702,6 +702,7 @@ class Certificate(BaseModel):
     '''
 
     def __init__(self, tbsCertificate):
+        self._raw = tbsCertificate
         self.version = tbsCertificate.getComponentByName("version")._value
         self.serial_number = tbsCertificate.getComponentByName("serialNumber")._value
         self.signature_algorithm = str(tbsCertificate.getComponentByName("signature"))
