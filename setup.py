@@ -20,6 +20,14 @@ setup(
             'pkcs7_parse.py = x509.commands:print_signature_info_cmd',
         ]
     },
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3 :: Only",
+        "Topic :: Security :: Cryptography",
+        "Topic :: Software Development :: Libraries",
+    ],
     test_suite='x509.test',
     zip_safe=False,
 )
