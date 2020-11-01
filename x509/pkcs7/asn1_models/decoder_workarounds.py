@@ -7,7 +7,10 @@ from pyasn1.codec.der import decoder as derDecoder
 # According to spec, CER/DER should only accept 0 as False and 0xFF as True.
 # Though some authors of X.509-cert-creating software didn't get the memo.
 
-class BooleanFixDerDecoder(derDecoder.Decoder): pass
+
+class BooleanFixDerDecoder(derDecoder.Decoder):
+    pass
+
 
 # This is a tag->decoder map. We take DER map and replace its Boolean handler
 # with stock BER one. That will make the decoder tolerant to BER-encoded
